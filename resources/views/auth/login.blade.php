@@ -29,8 +29,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center mb-5">
-                        {{-- <a href="index.html" class="logo"><img src="{{ asset('template') }}/images/logo-light.png"
-                                height="24" alt="logo"></a> --}}
+                        {{-- <a href="" class="logo"><img src="{{ asset('img') }}/helwa.png" height="200"
+                                alt="logo"></a> --}}
                         {{-- <h5 class="font-size-16 text-white-50 mb-4">Responsive Bootstrap 4 Admin Dashboard</h5> --}}
                     </div>
                 </div>
@@ -42,7 +42,9 @@
                     <div class="card">
                         <div class="card-body p-4">
                             <div class="p-2">
-                                <h5 class="mb-5 text-center">HELWA PARFUME</h5>
+                                {{-- <h5 class="mb-5 text-center">HELWA PARFUME</h5> --}}
+                                <center><img src="{{ asset('img') }}/helwa.png" height="100" alt="logo"
+                                        class="mb-3"></center>
                                 @error('username')
                                     <div class="alert alert-danger" role="alert">
                                         {{ $message }}
