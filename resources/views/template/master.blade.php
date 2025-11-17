@@ -1,237 +1,431 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{{ asset('sneat') }}/assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-
-    <title>{{ $title }}</title>
-
-    <meta name="description" content="" />
+    <title>Dashboard | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('img') }}/MEN_LOCO_BLACK.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('template') }}/images/favicon.ico">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- datepicker -->
+    <link href="{{ asset('template') }}/libs/air-datepicker/air-datepicker.css" rel="stylesheet" type="text/css" />
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/fonts/boxicons.css" />
+    <!-- jvectormap -->
+    <link href="{{ asset('template') }}/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/css/demo.css" />
+    <!-- Bootstrap Css -->
+    <link href="{{ asset('template') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('template') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('template') }}/css/app.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+</head>
 
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
+<body data-topbar="colored">
 
-    {{-- tambahan --}}
-    <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    {{-- endtambahan --}}
+    <!-- Begin page -->
+    <div id="layout-wrapper">
 
-    <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+        @include('template._navbar')
 
-     <!-- Select2 -->
- <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/select2/css/select2.min.css">
- <link rel="stylesheet" href="{{ asset('adminlte') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
- {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" /> --}}
-    <!-- Page CSS -->
-
-    {{-- <style>
-      .select2-container{
-          z-index:100000;
-      }
-
-      .select2-search__field{
-        z-index:90999;
-      }
-    </style> --}}
-
-    <!-- Helpers -->
-    <script src="{{ asset('sneat') }}/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('sneat') }}/assets/js/config.js"></script>
-    @yield('chart')
-  </head>
-
-  <body>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
-        <!-- Menu -->
-
-        {{-- tempat sidebar --}}
+        <!-- ========== Left Sidebar Start ========== -->
         @include('template._sidebar')
-        <!-- / Menu -->
+        <!-- Left Sidebar End -->
 
-        <!-- Layout container -->
-        <div class="layout-page">
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        @yield('content')
+        <!-- end main content-->
 
-            
-          {{-- tempat navbar --}}
-          {{-- @include('template._navbar') --}}
+    </div>
+    <!-- END layout-wrapper -->
 
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            
-            {{-- tempat content --}}
-            @yield('content')
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
 
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                      document.write(new Date().getFullYear());
-                  </script>
-                  , made with ❤️ by
-                  <a href="" class="footer-link fw-bolder">Men Loco</a>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#chat-tab" role="tab"
+                        aria-selected="true">
+                        <span class="d-none d-sm-block"><i class="mdi mdi-message-text font-size-22"></i></span>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tasks-tab" role="tab" aria-selected="false"
+                        tabindex="-1">
+                        <span class="d-none d-sm-block"><i class="mdi mdi-format-list-checkbox font-size-22"></i></span>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" href="#settings-tab" role="tab" aria-selected="false"
+                        tabindex="-1">
+                        <span class="d-none d-sm-block"><i class="mdi mdi-settings font-size-22"></i></span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content text-muted" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="chat-tab" role="tabpanel" aria-labelledby="chat-tab"
+                    tabindex="0">
+
+                    <form class="search-bar py-4 px-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="mdi mdi-magnify"></span>
+                        </div>
+                    </form>
+
+                    <h6 class="px-4 py-3 mt-2 bg-light">Group Chats</h6>
+
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-success"></i>
+                            <span class="mb-0 mt-1">App Development</span>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-warning"></i>
+                            <span class="mb-0 mt-1">Office Work</span>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-danger"></i>
+                            <span class="mb-0 mt-1">Personal Group</span>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item ps-3 d-block">
+                            <i class="mdi mdi-checkbox-blank-circle-outline me-1"></i>
+                            <span class="mb-0 mt-1">Freelance</span>
+                        </a>
+                    </div>
+
+                    <h6 class="px-4 py-3 mt-4 bg-light">Favourites</h6>
+
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-10.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Andrew Mackie</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-1.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Rory Dalyell</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">To an English person, it will seem like
+                                            simplified</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-9.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status busy"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Jaxon Dunhill</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">To achieve this, it would be necessary.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <h6 class="px-4 py-3 mt-4 bg-light">Other Chats</h6>
+
+                    <div class="p-2 pb-4">
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-2.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Jackson Therry</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">Everyone realizes why a new common language.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-4.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Charles Deakin</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">The languages only differ in their grammar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-5.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Ryan Salting</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">If several languages coalesce the grammar of the
+                                            resulting.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-6.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status online"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Sean Howse</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-7.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status busy"></i>
+                                </div>
+                                <div class="media-body  flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Dean Coward</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">The new common language will be more simple.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset notification-item">
+                            <div class="d-flex media">
+                                <div class="position-relative align-self-center me-3">
+                                    <img src="{{ asset('template') }}/images/users/avatar-8.jpg"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
+                                    <i class="mdi mdi-circle user-status away"></i>
+                                </div>
+                                <div class="media-body flex-grow-1 overflow-hidden">
+                                    <h6 class="mt-0 mb-1">Hayley East</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-0 text-truncate">One could refuse to pay expensive translators.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
-                
-              </div>
-            </footer>
-            <!-- / Footer -->
 
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
+                <div class="tab-pane fade" id="tasks-tab" role="tabpanel" aria-labelledby="tasks-tab"
+                    tabindex="0">
+                    <h6 class="p-3 mb-0 mt-4 bg-light">Working Tasks</h6>
 
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">App Development<span class="float-end">75%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%"
+                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Database Repair<span class="float-end">37%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 37%"
+                                    aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Backup Create<span class="float-end">52%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 52%"
+                                    aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <h6 class="p-3 mb-0 mt-4 bg-light">Upcoming Tasks</h6>
+
+                    <div class="p-2">
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Sales Reporting<span class="float-end">12%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 12%"
+                                    aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">Redesign Website<span class="float-end">67%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 67%"
+                                    aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+
+                        <a href="javascript: void(0);" class="text-reset item-hovered d-block p-3">
+                            <p class="text-muted mb-0">New Admin Design<span class="float-end">84%</span></p>
+                            <div class="progress mt-2" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 84%"
+                                    aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="p-3 mt-2">
+                        <a href="javascript: void(0);"
+                            class="btn btn-success d-block w-100 waves-effect waves-light">Create Task</a>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="settings-tab" role="tabpanel" aria-labelledby="settings-tab"
+                    tabindex="0">
+                    <h6 class="px-4 py-3 bg-light">General Settings</h6>
+
+                    <div class="p-4">
+                        <h6 class="font-weight-medium">Online Status</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check1"
+                                name="settings-check1" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check1">Show your
+                                status to all</label>
+                        </div>
+
+                        <h6 class="mt-4">Auto Updates</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check2"
+                                name="settings-check2" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check2">Keep up to
+                                date</label>
+                        </div>
+
+                        <h6 class="mt-4">Backup Setup</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check3"
+                                name="settings-check3">
+                            <label class="custom-control-label font-weight-normal" for="settings-check3">Auto
+                                backup</label>
+                        </div>
+
+                    </div>
+
+                    <h6 class="px-4 py-3 mt-2 bg-light">Advanced Settings</h6>
+
+                    <div class="p-4">
+                        <h6 class="font-weight-medium">Application Alerts</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check4"
+                                name="settings-check4" checked="">
+                            <label class="custom-control-label font-weight-normal" for="settings-check4">Email
+                                Notifications</label>
+                        </div>
+
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check5"
+                                name="settings-check5">
+                            <label class="custom-control-label font-weight-normal" for="settings-check5">SMS
+                                Notifications</label>
+                        </div>
+
+                        <h6 class="mt-4">API</h6>
+                        <div class="custom-control custom-switch mb-1">
+                            <input type="checkbox" class="custom-control-input" id="settings-check6"
+                                name="settings-check6">
+                            <label class="custom-control-label font-weight-normal" for="settings-check6">Enable
+                                access</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end slimscroll-menu-->
     </div>
-    <!-- / Layout wrapper -->
+    <!-- /Right-bar -->
 
-    {{-- <div class="buy-now">
-      <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-    </div> --}}
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-    <div class="open-sidebar d-xl-none d-xxl-block">
-      {{-- <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-open-sidebar">Test</a> --}}
-      <a class="layout-menu-toggle nav-item nav-link px-0 me-xl-4 btn btn-sm btn-primary btn-open-sidebar" href="javascript:void(0)">
-        <i class="bx bx-menu bx-sm"></i>
-      </a>
-    </div>
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('template') }}/libs/jquery/jquery.min.js"></script>
+    <script src="{{ asset('template') }}/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template') }}/libs/metismenu/metisMenu.min.js"></script>
+    <script src="{{ asset('template') }}/libs/simplebar/simplebar.min.js"></script>
+    <script src="{{ asset('template') }}/libs/node-waves/waves.min.js"></script>
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    {{-- <script src="{{ asset('sneat') }}/assets/vendor/libs/jquery/jquery.js"></script> --}}
-    <!-- jQuery -->
-    <script src="{{ asset('adminlte') }}/plugins/jquery/jquery.min.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/popper/popper.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/js/bootstrap.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-    <script src="{{ asset('sneat') }}/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+    <!-- datepicker -->
+    <script src="{{ asset('template') }}/libs/air-datepicker/js/datepicker.min.js"></script>
+    <script src="{{ asset('template') }}/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
 
-    <!-- Vendors JS -->
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <!-- apexcharts -->
+    <script src="{{ asset('template') }}/libs/apexcharts/apexcharts.min.js"></script>
 
-    <!-- Main JS -->
-    <script src="{{ asset('sneat') }}/assets/js/main.js"></script>
+    <script src="{{ asset('template') }}/libs/jquery-knob/jquery.knob.min.js"></script>
 
-    <!-- Page JS -->
-    <script src="{{ asset('sneat') }}/assets/js/dashboards-analytics.js"></script>
+    <!-- Jq vector map -->
+    <script src="{{ asset('template') }}/libs/jqvmap/jquery.vmap.min.js"></script>
+    <script src="{{ asset('template') }}/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
 
-    <!-- Page JS -->
-    <script src="{{ asset('sneat') }}/assets/js/extended-ui-perfect-scrollbar.js"></script>
+    <script src="{{ asset('template') }}/js/pages/dashboard.init.js"></script>
 
-    {{-- datatables --}}
-<script src="{{ asset('adminlte') }}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ asset('template') }}/js/app.js"></script>
 
-<script src="{{ asset('adminlte') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ asset('adminlte') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    @yield('script')
 
-{{-- swal --}}
-<script src="{{ asset('adminlte') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
+</body>
 
-{{-- select2 --}}
-<script src="{{ asset('adminlte') }}/plugins/select2/js/select2.full.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script> --}}
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('#table').DataTable({
-                "bSort": true,
-                // "scrollX": true,
-                "paging": true,
-                "stateSave": true,
-                "scrollCollapse": true
-            });
-
-            $('#table2').DataTable({
-                "bSort": true,
-                // "scrollX": true,
-                "paging": true,
-                "stateSave": true,
-                "scrollCollapse": true
-            });
-
-
-            $('.select').select2();
-
-            $('.select2bs4').select2({
-                theme: 'bootstrap4',
-                tags: true,
-            });
-
-            // $( '.select2bs4' ).select2( {
-            //     theme: 'bootstrap4',
-            //     dropdownParent: $('#input_penilaian')
-            // } );
-
-        });
-    </script>
-@yield('script')
-
-  </body>
 </html>
