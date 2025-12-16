@@ -11,5 +11,5 @@ class Resep extends Model
 
     protected $table = 'resep';
 
-    protected $fillable = ['produk_id', 'takaran1', 'takaran2', 'cluster_id', 'ukuran', 'harga', 'void'];
+    protected $fillable = ['takaran1', 'takaran2', 'cluster_id', 'ukuran', 'harga', 'void'];
 }
