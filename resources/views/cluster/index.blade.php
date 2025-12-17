@@ -33,7 +33,7 @@
                                 </div>
                             </div> --}}
                         <button type="button" class="btn btn-sm btn-light float-end" data-bs-toggle="modal"
-                            data-bs-target="#modal_tamnah">
+                            data-bs-target="#modal_tambah">
                             <i class="fa fa-plus-circle"></i>
                             Tambah Cluster
                         </button>
@@ -47,10 +47,10 @@
         <div class="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="datatable" class="tabledt-responsive nowrap"
+                                <table id="datatable" class="tabledt-responsive nowrap table-striped"
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
@@ -58,6 +58,7 @@
                                             <th>Cluster</th>
                                             <th>Takaran<br>Alkohol</th>
                                             <th>Takaran<br>Produk</th>
+                                            <th>Harga</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -71,6 +72,14 @@
                                                 <td>{{ $d->nm_cluster }}</td>
                                                 <td>{{ $d->takaran1 }}%</td>
                                                 <td>{{ $d->takaran2 }}%</td>
+                                                <td>
+                                                    @if ($d->resep)
+                                                        @foreach ($d->resep as $rs)
+                                                            {{ $rs->ukuran }} ml : {{ number_format($rs->harga,0) }}<br>
+                                                        @endforeach
+                                                    @endif
+                                                    
+                                                </td>
                                                 <td>
                                                     <button type="button" class="btn btn-sm btn-primary"
                                                         data-bs-toggle="modal"
@@ -101,7 +110,7 @@
         @csrf
         <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabeltambah"
             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title mt-0" id="myModalLabeltambah">Tambah Cluster</h5>
@@ -133,6 +142,28 @@
                                 <input type="number" name="takaran2" class="form-control" required>
                             </div>
 
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Ukuran</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ukuran as $u)
+                                        <tr>
+                                            <td>{{ $u->ukuran }} ml</td>
+                                            <td>
+                                                <input type="hidden" name="ukuran[]" value="{{ $u->ukuran }}" required>
+                                                <input type="number" class="form-control form-control-sm" name="harga[]" required>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -189,6 +220,42 @@
                                 </div>
 
                             </div>
+                            <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Ukuran</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ukuran as $u)
+                                    @php
+                                        $dt = $d->resep;
+                                        $dat = $dt->where('ukuran',$u->ukuran)->where('void',0)->first();
+                                    @endphp
+                                    @if ($dat)
+                                        <tr>
+                                            <td>{{ $u->ukuran }} ml</td>
+                                            <td>
+                                                <input type="hidden" name="resep_id[]" value="{{ $dat->id }}" required>
+                                                <input type="number" class="form-control form-control-sm" name="harga[]" value="{{ $dat->harga }}" required>
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td>{{ $u->ukuran }} ml</td>
+                                            <td>
+                                                <input type="hidden" name="ukuran_add[]" value="{{ $u->ukuran }}" required>
+                                                <input type="number" class="form-control form-control-sm" name="harga_add[]" required>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                        
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

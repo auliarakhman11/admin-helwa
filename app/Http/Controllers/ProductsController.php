@@ -147,18 +147,18 @@ class ProductsController extends Controller
             $ukuran = $request->ukuran_add;
             $harga = $request->harga_add;
 
-            if (!empty($takaran1)) {
-                for ($count = 0; $count < count($takaran1); $count++) {
-                    Resep::create([
-                        'produk_id' => $produk->id,
-                        'takaran1' => $takaran1[$count],
-                        'takaran2' => $takaran2[$count],
-                        'cluster_id' => $cluster_id[$count],
-                        'ukuran' => $ukuran[$count],
-                        'harga' => $harga[$count] ? $harga[$count] : 0,
-                    ]);
-                }
-            }
+            // if (!empty($takaran1)) {
+            //     for ($count = 0; $count < count($takaran1); $count++) {
+            //         Resep::create([
+            //             'produk_id' => $produk->id,
+            //             'takaran1' => $takaran1[$count],
+            //             'takaran2' => $takaran2[$count],
+            //             'cluster_id' => $cluster_id[$count],
+            //             'ukuran' => $ukuran[$count],
+            //             'harga' => $harga[$count] ? $harga[$count] : 0,
+            //         ]);
+            //     }
+            // }
 
             $resep_id = $request->resep_id;
             $harga = $request->harga;
