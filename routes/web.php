@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\UserController;
@@ -53,15 +54,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/products', [ProductsController::class, 'addProduct'])->name('addProduct');
         Route::patch('/produk', [ProductsController::class, 'editProduk'])->name('editProduk');
 
-        Route::post('/add-resep', [ProductsController::class, 'addResep'])->name('addResep');
-
-        Route::post('/drop-resep', [ProductsController::class, 'dropResep'])->name('dropResep');
-
         Route::post('/sort-produk', [ProductsController::class, 'sortProduk'])->name('sortProduk');
 
         Route::get('/delete-produk/{id}', [ProductsController::class, 'deleteProduk'])->name('deleteProduk');
-
-        Route::get('getHargaResep/{produk_id}', [ProductsController::class, 'getHargaResep'])->name('getHargaResep');
         //end produk
 
         //ukuran
@@ -77,6 +72,14 @@ Route::middleware('auth')->group(function () {
         Route::patch('editCluster', [ClusterController::class, 'editCluster'])->name('editCluster');
         Route::get('deleteCluster/{Cluster}', [ClusterController::class, 'deleteCluster'])->name('deleteCluster');
         //end Cluster
+
+        //karyawan
+        Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
+        Route::post('/karyawan', [KaryawanController::class, 'addKaryawan'])->name('addKaryawan');
+        Route::patch('/karyawan', [KaryawanController::class, 'editKaryawan'])->name('editKaryawan');
+        Route::post('/delete-karyawan', [KaryawanController::class, 'dropKaryawan'])->name('dropKaryawan');
+        Route::post('sort-karyawan', [KaryawanController::class, 'sortKaryawan'])->name('sortKaryawan');
+        //end karyawan
 
     });
 

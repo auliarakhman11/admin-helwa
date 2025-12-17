@@ -37,6 +37,20 @@
                     </ul>
                 </li>
 
+                <li class="mm-active">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
+                        </div>
+                        <span>Karyawan</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['karyawan', 'cluster']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('karyawan') ? 'mm-active' : '' }}"><a href="{{ route('karyawan') }}"
+                                class="{{ Request::is('karyawan') ? 'active' : '' }}">List Karyawan</a></li>
+                    </ul>
+                </li>
+
             </ul>
 
         </div>
