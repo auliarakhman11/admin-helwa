@@ -192,7 +192,7 @@
                                         <div class="col-4">
                                             <label for="{{ $k->nama . $k->id }}"><input type="checkbox"
                                                     id="{{ $k->nama . $k->id }}" value="{{ $k->id }}"
-                                                    name="cabang_id[]"> {{ $k->nama }}</label>
+                                                    name="cabang_id[]" checked> {{ $k->nama }}</label>
                                         </div>
                                     @endforeach
 
