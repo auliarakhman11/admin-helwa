@@ -46,7 +46,7 @@ class UserController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'username' => ['required', 'string', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'confirmed'],
-                'role_id' => ['required'],
+                'role' => ['required'],
             ],
             [
                 'name.required' => 'Nama tidak boleh kosong',
@@ -59,7 +59,7 @@ class UserController extends Controller
                 'password.required' => 'Password tidak boleh kosong',
                 'password.string' => 'Password hanya boleh hufuf dan angka',
                 'password.confirmed' => 'Password tidak sama',
-                'role_id.required' => 'Role harus diisi',
+                'role.required' => 'Role harus diisi',
 
             ]
         );
@@ -74,7 +74,8 @@ class UserController extends Controller
             'name' => request('name'),
             'username' => request('username'),
             'password' => bcrypt(request('password')),
-            'role_id' => request('role_id'),
+            'role' => request('role'),
+            'aktif' => 1,
         ]);
 
 
@@ -124,7 +125,8 @@ class UserController extends Controller
     {
         User::where('id', $request->id)->update([
             'name' => $request->name,
-            'role_id' => $request->role_id,
+            'role' => $request->role,
+            'aktif' => $request->aktif,
         ]);
 
 

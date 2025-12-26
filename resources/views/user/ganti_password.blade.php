@@ -1,200 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{{ asset('sneat') }}/assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+    <title>Ganti Password | Helawa Perfume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('img') }}/helwa.jpg">
 
-    <title>Ganti Password</title>
+    <!-- Bootstrap Css -->
+    <link href="{{ asset('template') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('template') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('template') }}/css/app.min.css" rel="stylesheet" type="text/css" />
 
-    <meta name="description" content="" />
+</head>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('img') }}/Logo_BPN-KemenATR.png" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/pages/page-auth.css" />
-    <!-- Helpers -->
-    <script src="{{ asset('sneat') }}/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('sneat') }}/assets/js/config.js"></script>
-  </head>
-
-  <body>
-    <!-- Content -->
-
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-          <!-- Register Card -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Logo -->
-              <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-
-                      
-                  <span class="app-brand-text demo text-body fw-bolder">Ganti Password</span>
-                </a>
-
-                
-
-              </div>
-              <!-- /Logo -->
-              {{-- <h4 class="mb-2">Adventure starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p> --}}
-              @if (session('success'))
-<div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-@endif
-                @if (session('error'))
-<div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-@endif
-
-              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('editPassword') }}">
-                  @csrf
-                
-                <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Password saat ini</label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      
-                      class="form-control"
-                      name="old_password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                </div>
-
-                <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Password baru</label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      
-                      class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                  @error('password')
-    <span class="text-danger">{{ $message }}</span>
-@enderror
-                </div>
-
-                <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Ulangi password baru</label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      
-                      class="form-control"
-                      name="password_confirmation"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary d-grid w-100">Save</button>
-              </form>
-
-              <p class="text-center">
-                
-                <a href="{{ route('laporanPenjualan') }}">
-                  <span>Kembali</span>
-                </a>
-                
-              </p>
-            </div>
-          </div>
-          <!-- Register Card -->
-        </div>
-      </div>
-    </div>
-
-    <!-- / Content -->
-
-    {{-- <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
+<body class="bg-primary bg-pattern">
+    {{-- <div class="home-btn d-none d-sm-block">
+        <a href="index.html"><i class="mdi mdi-home-variant h2 text-white"></i></a>
     </div> --}}
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/popper/popper.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/js/bootstrap.js"></script>
-    <script src="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center mb-5">
+                        {{-- <a href="" class="logo"><img src="{{ asset('img') }}/helwa.png" height="200"
+                                alt="logo"></a> --}}
+                        <h5 class="font-size-16 text-white-50 mb-4">Ganti Password</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
 
-    <script src="{{ asset('sneat') }}/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-sm-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="p-2">
+                                {{-- <h5 class="mb-5 text-center">HELWA PARFUME</h5> --}}
+                                <center><img src="{{ asset('img') }}/helwa.jpg" height="100" alt="logo"
+                                        class="mb-3"></center>
 
-    <!-- Vendors JS -->
+                                @error('password')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
 
-    <!-- Main JS -->
-    <script src="{{ asset('sneat') }}/assets/js/main.js"></script>
+                                <?php if(session('success')): ?>
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                                <?php endif; ?>
 
-    <!-- Page JS -->
+                                <?php if(session('error')): ?>
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session('error') }}
+                                </div>
+                                <?php endif; ?>
+                                <form class="form-horizontal" method="POST" action="{{ route('editPassword') }}">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12">
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+                                            <div class="form-group form-group-custom mb-4">
+                                                <input type="password" class="form-control" id="confirmpassword"
+                                                    name="old_password" required>
+                                                <label for="confirmpassword">Password saat ini</label>
+                                            </div>
+
+                                            <div class="form-group form-group-custom mb-4">
+                                                <input type="password" class="form-control" id="userpassword"
+                                                    name="password" required>
+                                                <label for="userpassword">Password Baru</label>
+                                            </div>
+
+                                            <div class="form-group form-group-custom mb-4">
+                                                <input type="password" class="form-control" id="password_confirmation"
+                                                    name="password_confirmation" required>
+                                                <label for="password_confirmation">Ulangi password baru</label>
+                                            </div>
+
+                                            <div class="row">
+                                                {{-- <div class="col-md-6">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customControlInline">
+                                                        <label class="custom-control-label"
+                                                            for="customControlInline">Remember me</label>
+                                                    </div>
+                                                </div> --}}
+                                                {{-- <div class="col-md-6">
+                                                    <div class="text-md-right mt-3 mt-md-0">
+                                                        <a href="auth-recoverpw.html" class="text-muted"><i
+                                                                class="mdi mdi-lock"></i> Forgot your password?</a>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                            <div class="mt-4">
+                                                <button class="btn btn-success d-block w-100 waves-effect waves-light"
+                                                    type="submit">Ganti Password</button>
+                                            </div>
+                                            <div class="mt-4 text-center">
+                                                <a href="/" class="text-muted"><i
+                                                        class="mdi mdi-arrow-left-circle me-1"></i> Kembali</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </div>
+    <!-- end Account pages -->
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('template') }}/libs/jquery/jquery.min.js"></script>
+    <script src="{{ asset('template') }}/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template') }}/libs/metismenu/metisMenu.min.js"></script>
+    <script src="{{ asset('template') }}/libs/simplebar/simplebar.min.js"></script>
+    <script src="{{ asset('template') }}/libs/node-waves/waves.min.js"></script>
+
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+    <script src="{{ asset('template') }}/js/app.js"></script>
+
+</body>
+
 </html>

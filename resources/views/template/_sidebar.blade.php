@@ -16,8 +16,25 @@
                     </a>
                 </li> --}}
 
+                <li class="{{ Request::is(['penjualan', '/']) ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['penjualan', '/']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
+                        </div>
+                        <span>Penjualan</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['penjualan', '/']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('/') ? 'mm-active' : '' }}"><a href="{{ route('dashboard') }}"
+                                class="{{ Request::is('/') ? 'active' : '' }}">Dashboard</a></li>
+                        <li class="{{ Request::is('penjualan') ? 'mm-active' : '' }}"><a href="{{ route('penjualan') }}"
+                                class="{{ Request::is('penjualan') ? 'active' : '' }}">List Penjualan</a></li>
 
-                <li class="mm-active">
+                    </ul>
+                </li>
+
+
+                <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
                         class="has-arrow waves-effect {{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-box-open"></i>
@@ -37,17 +54,31 @@
                     </ul>
                 </li>
 
-                <li class="mm-active">
+                <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
                         class="has-arrow waves-effect {{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
                         </div>
                         <span>Karyawan</span>
                     </a>
-                    <ul class="sub-menu {{ Request::is(['karyawan', 'cluster']) ? 'mm-collapse mm-show' : '' }}"
+                    <ul class="sub-menu {{ Request::is(['karyawan']) ? 'mm-collapse mm-show' : '' }}"
                         aria-expanded="false">
                         <li class="{{ Request::is('karyawan') ? 'mm-active' : '' }}"><a href="{{ route('karyawan') }}"
                                 class="{{ Request::is('karyawan') ? 'active' : '' }}">List Karyawan</a></li>
+                    </ul>
+                </li>
+
+                <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['user']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-users-cog"></i>
+                        </div>
+                        <span>User</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['user']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('user') ? 'mm-active' : '' }}"><a href="{{ route('user') }}"
+                                class="{{ Request::is('user') ? 'active' : '' }}">List User</a></li>
                     </ul>
                 </li>
 

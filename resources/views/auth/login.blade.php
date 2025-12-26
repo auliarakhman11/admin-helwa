@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Login | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Login | Helawa Perfume</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('template') }}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('img') }}/helwa.jpg">
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('template') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -43,9 +43,16 @@
                         <div class="card-body p-4">
                             <div class="p-2">
                                 {{-- <h5 class="mb-5 text-center">HELWA PARFUME</h5> --}}
-                                <center><img src="{{ asset('img') }}/helwa.png" height="100" alt="logo"
+                                <center><img src="{{ asset('img') }}/helwa.jpg" height="100" alt="logo"
                                         class="mb-3"></center>
+
                                 @error('username')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                @error('password')
                                     <div class="alert alert-danger" role="alert">
                                         {{ $message }}
                                     </div>
@@ -69,7 +76,7 @@
                                             <div class="form-group form-group-custom mb-4">
                                                 <input type="text" class="form-control" id="username"
                                                     name="username" value="{{ old('username') }}" required>
-                                                <label for="username">User Name</label>
+                                                <label for="username">Username</label>
                                             </div>
 
                                             <div class="form-group form-group-custom mb-4">

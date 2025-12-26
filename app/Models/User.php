@@ -19,9 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'role_id',
+        'role',
         'username',
         'password',
+        'aktif'
     ];
 
 
@@ -43,14 +44,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function jenisUser()
-    {
-        return $this->belongsTo(JenisUser::class, 'jenis_user_id', 'id');
-    }
-
-    public function aksesProses()
-    {
-        return $this->hasMany(AksesProses::class, 'user_id', 'id');
-    }
 }

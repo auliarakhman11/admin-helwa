@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="" class="logo logo-dark">
                     <span class="logo-sm">
-                        {{-- <img src="{{ asset('img') }}/helwa.png" alt="" height="20"> --}}
+                        <img src="{{ asset('img') }}/helwa.jpg" alt="" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('img') }}/helwa.png" alt="" height="20">
+                        <img src="{{ asset('img') }}/helwa.jpg" alt="" height="50">
                     </span>
                 </a>
 
                 <a href="" class="logo logo-light">
                     <span class="logo-sm">
-                        {{-- <img src="{{ asset('img') }}/helwa.png" alt="" height="20"> --}}
+                        <img src="{{ asset('img') }}/helwa.jpg" alt="" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('img') }}/helwa.png" alt="" height="20">
+                        <img src="{{ asset('img') }}/helwa.jpg" alt="" height="50">
                     </span>
                 </a>
             </div>
@@ -112,8 +112,8 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center"
                     id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user"
-                        src="{{ asset('template') }}/images/users/avatar-1.jpg" alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user" src="{{ asset('img') }}/helwa.png"
+                        alt="Header Avatar">
                     <span class="d-none d-sm-inline-block ms-1">{{ Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
@@ -127,6 +127,8 @@
                     <a class="dropdown-item" href="#"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i>
                         Lock screen</a>
                     <div class="dropdown-divider"></div> --}}
+                    <a class="dropdown-item" href="{{ route('gantiPassword') }}"><i
+                            class="mdi mdi-lock-reset font-size-16 align-middle me-1"></i> Ganti Password</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"><i
                             class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
                 </div>

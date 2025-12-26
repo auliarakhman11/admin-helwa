@@ -41,12 +41,19 @@ class AuthController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 // dd($user);
-                Auth::login($user);
 
-                return redirect(route('home'));
+
+                if ($user->aktif) {
+                    Auth::login($user);
+                    return redirect(route('dashboard'));
+                } else {
+                    throw ValidationException::withMessages([
+                        'password' => 'User tidak aktif'
+                    ]);
+                }
             } else {
                 throw ValidationException::withMessages([
-                    'password' => 'Password salah'
+                    'password' => 'Username atau password salah'
                 ]);
             }
         }

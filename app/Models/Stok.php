@@ -10,11 +10,11 @@ class Stok extends Model
     use HasFactory;
 
     protected $table = 'stok';
-    protected $fillable = ['kode', 'invoice_id', 'penjualan_id', 'produk_id', 'cabang_id', 'bahan_id', 'qty', 'harga', 'tgl', 'admin', 'transaksi', 'jenis', 'void', 'tutup'];
+    protected $fillable = ['invoice_id', 'penjualan_id', 'produk_id', 'cabang_id', 'qty', 'harga', 'tgl', 'admin', 'jenis', 'void'];
 
-    public function bahan()
+    public function produk()
     {
-        return $this->belongsTo(Bahan::class, 'bahan_id', 'id');
+        return $this->belongsTo(Produk::class, 'produk_id', 'id');
     }
 
     public function cabang()
