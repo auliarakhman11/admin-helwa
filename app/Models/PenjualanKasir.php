@@ -10,7 +10,7 @@ class PenjualanKasir extends Model
     use HasFactory;
 
     protected $table = 'penjualan_kasir';
-    protected $fillable = ['invoice_id', 'produk_id', 'resep_id', 'cluster_id', 'ukuran', 'qty', 'harga', 'diskon', 'total', 'void', 'admin', 'cabang_id', 'tgl', 'catatan', 'harga_normal', 'pembayaran_id', 'online'];
+    protected $fillable = ['invoice_id', 'produk_id', 'resep_id', 'cluster_id', 'ukuran', 'qty', 'harga', 'diskon', 'total', 'void', 'admin', 'cabang_id', 'tgl', 'catatan', 'mix', 'ket_mix', 'harga_normal', 'pembayaran_id', 'online'];
 
     public function getMenu()
     {

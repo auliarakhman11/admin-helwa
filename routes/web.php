@@ -6,6 +6,7 @@ use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UkuranController;
@@ -96,6 +97,13 @@ Route::middleware('auth')->group(function () {
         Route::post('kembalikanInvoice', [PenjualanController::class, 'kembalikanInvoice'])->name('kembalikanInvoice');
         Route::get('/', [PenjualanController::class, 'dashboard'])->name('dashboard');
         //end penjualan
+
+        //member
+        Route::get('member', [MemberController::class, 'index'])->name('member');
+        Route::post('addMember', [MemberController::class, 'addMember'])->name('addMember');
+        Route::patch('editMember', [MemberController::class, 'editMember'])->name('editMember');
+        Route::post('dropMember', [MemberController::class, 'dropMember'])->name('dropMember');
+        //end member
 
     });
 
