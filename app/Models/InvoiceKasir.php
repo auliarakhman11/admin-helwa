@@ -10,7 +10,7 @@ class InvoiceKasir extends Model
     use HasFactory;
 
     protected $table = 'invoice_kasir';
-    protected $fillable = ['no_invoice', 'nm_customer', 'total', 'pembulatan', 'dibayar', 'diskon', 'no_tlp', 'void', 'ket_void', 'admin', 'user_void', 'tgl', 'pembayaran_id', 'cabang_id', 'print', 'online'];
+    protected $fillable = ['no_invoice', 'nm_customer', 'total', 'pembulatan', 'dibayar', 'diskon', 'no_tlp', 'void', 'ket_void', 'admin', 'user_void', 'tgl', 'pembayaran_id', 'cabang_id', 'print', 'online','member_id','diskon_id'];
 
     public function penjualan()
     {

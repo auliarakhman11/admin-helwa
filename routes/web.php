@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ClusterController;
+use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MemberController;
@@ -104,6 +105,13 @@ Route::middleware('auth')->group(function () {
         Route::patch('editMember', [MemberController::class, 'editMember'])->name('editMember');
         Route::post('dropMember', [MemberController::class, 'dropMember'])->name('dropMember');
         //end member
+
+        //diskon
+        Route::get('diskon', [DiskonController::class, 'index'])->name('diskon');
+        Route::post('addDiskon', [DiskonController::class, 'addDiskon'])->name('addDiskon');
+        Route::patch('editDiskon', [DiskonController::class, 'editDiskon'])->name('editDiskon');
+        Route::post('dropDiskon', [DiskonController::class, 'dropDiskon'])->name('dropDiskon');
+        //enddiskon
 
     });
 
