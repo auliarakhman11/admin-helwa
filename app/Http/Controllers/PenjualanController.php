@@ -88,7 +88,7 @@ class PenjualanController extends Controller
         }
 
         $periode = PenjualanKasir::where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->groupBy('tgl')->get();
-        $penjualan = InvoiceKasir::select('invoice_kasir.*')->selectRaw("SUM(total) as ttl_penjualan, SUM(diskon) as ttl_diskon")->where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->groupBy('tgl')->get();
+        $penjualan = InvoiceKasir::select('invoice_kasir.*')->selectRaw("SUM(total) as ttl_penjualan, SUM(diskon) as ttl_diskon, SUM(pembulatan) as ttl_pembulatan")->where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->groupBy('tgl')->get();
 
         $data_periode = [];
         $data_penjuaalan = [];
@@ -100,8 +100,8 @@ class PenjualanController extends Controller
             $dt_penjualan = $penjualan->where('tgl', $pr->tgl)->first();
 
             $data_periode[] =  date("d/m/Y", strtotime($pr->tgl));
-            $data_penjuaalan[] =  $dt_penjualan ? ($dt_penjualan->ttl_penjualan - $dt_penjualan->ttl_diskon) : 0;
-            $total_penjualan += $dt_penjualan ? ($dt_penjualan->ttl_penjualan - $dt_penjualan->ttl_diskon) : 0;
+            $data_penjuaalan[] =  $dt_penjualan ? ($dt_penjualan->ttl_penjualan - $dt_penjualan->ttl_diskon + $dt_penjualan->ttl_pembulatan) : 0;
+            $total_penjualan += $dt_penjualan ? ($dt_penjualan->ttl_penjualan - $dt_penjualan->ttl_diskon + $dt_penjualan->ttl_pembulatan) : 0;
         }
 
         $dt_pr = json_encode($data_periode);
