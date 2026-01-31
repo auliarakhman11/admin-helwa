@@ -6,6 +6,7 @@ use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PenjualanController;
@@ -112,6 +113,13 @@ Route::middleware('auth')->group(function () {
         Route::patch('editDiskon', [DiskonController::class, 'editDiskon'])->name('editDiskon');
         Route::post('dropDiskon', [DiskonController::class, 'dropDiskon'])->name('dropDiskon');
         //enddiskon
+
+        //investor
+        Route::get('investor', [InvestorController::class, 'index'])->name('investor');
+        Route::post('addInvestor', [InvestorController::class, 'addInvestor'])->name('addInvestor');
+        Route::patch('editInvestor', [InvestorController::class, 'editInvestor'])->name('editInvestor');
+        Route::post('dropInvestor', [InvestorController::class, 'dropInvestor'])->name('dropInvestor');
+        //endinvestor
 
     });
 

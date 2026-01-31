@@ -16,14 +16,14 @@
                     </a>
                 </li> --}}
 
-                <li class="{{ Request::is(['penjualan', '/', 'member','diskon']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['penjualan', '/', 'member', 'diskon']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
-                        class="has-arrow waves-effect {{ Request::is(['penjualan', '/', 'member','diskon']) ? 'mm-active' : '' }}">
+                        class="has-arrow waves-effect {{ Request::is(['penjualan', '/', 'member', 'diskon']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
                         </div>
                         <span>Penjualan</span>
                     </a>
-                    <ul class="sub-menu {{ Request::is(['penjualan', '/', 'member','diskon']) ? 'mm-collapse mm-show' : '' }}"
+                    <ul class="sub-menu {{ Request::is(['penjualan', '/', 'member', 'diskon']) ? 'mm-collapse mm-show' : '' }}"
                         aria-expanded="false">
                         <li class="{{ Request::is('/') ? 'mm-active' : '' }}"><a href="{{ route('dashboard') }}"
                                 class="{{ Request::is('/') ? 'active' : '' }}">Dashboard</a></li>
@@ -31,7 +31,7 @@
                                 class="{{ Request::is('penjualan') ? 'active' : '' }}">List Penjualan</a></li>
                         <li class="{{ Request::is('member') ? 'mm-active' : '' }}"><a href="{{ route('member') }}"
                                 class="{{ Request::is('member') ? 'active' : '' }}">List Member</a></li>
-                                <li class="{{ Request::is('diskon') ? 'mm-active' : '' }}"><a href="{{ route('diskon') }}"
+                        <li class="{{ Request::is('diskon') ? 'mm-active' : '' }}"><a href="{{ route('diskon') }}"
                                 class="{{ Request::is('diskon') ? 'active' : '' }}">List Diskon</a></li>
 
                     </ul>
@@ -58,7 +58,21 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['investor']) ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['investor']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-user-tie"></i>
+                        </div>
+                        <span>Investor</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['investor']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('investor') ? 'mm-active' : '' }}"><a href="{{ route('investor') }}"
+                                class="{{ Request::is('investor') ? 'active' : '' }}">List Investor</a></li>
+                    </ul>
+                </li>
+
+                <li class="{{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
                         class="has-arrow waves-effect {{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
@@ -72,7 +86,7 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['user']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
                         class="has-arrow waves-effect {{ Request::is(['user']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-users-cog"></i>
