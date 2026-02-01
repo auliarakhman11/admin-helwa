@@ -121,6 +121,13 @@ Route::middleware('auth')->group(function () {
         Route::post('dropInvestor', [InvestorController::class, 'dropInvestor'])->name('dropInvestor');
         //endinvestor
 
+        //pengeluaran investor
+        Route::get('pengeluaranInvestor', [InvestorController::class, 'pengeluaranInvestor'])->name('pengeluaranInvestor');
+        Route::post('addPengeluaranInvestor', [InvestorController::class, 'addPengeluaranInvestor'])->name('addPengeluaranInvestor');
+        Route::patch('editPengeluaranInvestor', [InvestorController::class, 'editPengeluaranInvestor'])->name('editPengeluaranInvestor');
+        Route::post('dropPengeluaranInvestor', [InvestorController::class, 'dropPengeluaranInvestor'])->name('dropPengeluaranInvestor');
+        //end pengeluaran investor
+
     });
 
 
@@ -137,6 +144,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('inputPersenInvestor',[InvestorController::class,'inputPersenInvestor'])->name('inputPersenInvestor');
 
 
 Route::middleware('guest')->group(function () {

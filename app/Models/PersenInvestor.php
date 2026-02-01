@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PersenInvestor extends Model
+{
+    use HasFactory;
+    protected $table = 'persen_investor';
+    protected $fillable = ['investor_id','cabang_id','jml_persen','tgl'];
+}
