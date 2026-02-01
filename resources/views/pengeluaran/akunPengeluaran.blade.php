@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h4 class="page-title mb-1">Investor</h4>
+                        <h4 class="page-title mb-1">List Akun</h4>
                         {{-- <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item active">Welcome to Xoric Dashboard</li>
                             </ol> --}}
@@ -75,7 +75,7 @@
                                                         <i class="fa fa-edit"></i>
                                                     </button>
 
-                                                    <form class="d-inline-block" action="{{ route('dropInvestor') }}"
+                                                    <form class="d-inline-block" action="{{ route('dropAkun') }}"
                                                         method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $d->id }}">
@@ -103,14 +103,14 @@
     </div>
     <!-- End Page-content -->
 
-    <form action="{{ route('addInvestor') }}" method="post">
+    <form action="{{ route('addAkun') }}" method="post">
         @csrf
         <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabeltambah"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0" id="myModalLabeltambah">Tambah Member</h5>
+                        <h5 class="modal-title mt-0" id="myModalLabeltambah">Tambah Akun</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span class="mdi mdi-close"></span>
                         </button>
@@ -119,8 +119,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label>Akun</label>
-                                <input type="text" name="nm_akun" class="form-control"
-                                    required>
+                                <input type="text" name="nm_akun" class="form-control" required>
                             </div>
 
                         </div>
@@ -137,7 +136,7 @@
 
 
     @foreach ($akun as $k)
-        <form action="{{ route('editInvestor') }}" method="post">
+        <form action="{{ route('editAkun') }}" method="post">
             @csrf
             @method('patch')
             <div class="modal fade" id="modal_edit{{ $k->id }}" role="dialog"
@@ -145,7 +144,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabelEdit">Edit Diskon</h5>
+                            <h5 class="modal-title" id="exampleModalLabelEdit">Edit Akun</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span class="mdi mdi-close"></span>
                             </button>
@@ -155,8 +154,8 @@
                                 <input type="hidden" name="id" value="{{ $k->id }}">
                                 <div class="col-12">
                                     <label>Akun</label>
-                                    <input type="text" name="nm_akun" value="{{ $k->nm_akun }}"
-                                        class="form-control" required>
+                                    <input type="text" name="nm_akun" value="{{ $k->nm_akun }}" class="form-control"
+                                        required>
                                 </div>
 
                             </div>

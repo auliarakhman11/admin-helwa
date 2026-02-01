@@ -37,6 +37,25 @@
                     </ul>
                 </li>
 
+                <li class="{{ Request::is(['akunPengeluaran', 'pengeluaran']) ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['akunPengeluaran', 'pengeluaran']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-calculator"></i>
+                        </div>
+                        <span>Pengeluaran</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['akunPengeluaran', 'pengeluaran']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('akunPengeluaran') ? 'mm-active' : '' }}"><a
+                                href="{{ route('akunPengeluaran') }}"
+                                class="{{ Request::is('akunPengeluaran') ? 'active' : '' }}">List Akun</a></li>
+                        <li class="{{ Request::is('pengeluaran') ? 'mm-active' : '' }}"><a
+                                href="{{ route('pengeluaran') }}"
+                                class="{{ Request::is('pengeluaran') ? 'active' : '' }}">List Pengeluaran</a></li>
+
+                    </ul>
+                </li>
+
 
                 <li class="{{ Request::is(['bahan', 'products']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
@@ -58,19 +77,21 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is(['investor','pengeluaranInvestor']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['investor', 'pengeluaranInvestor']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
-                        class="has-arrow waves-effect {{ Request::is(['investor','pengeluaranInvestor']) ? 'mm-active' : '' }}">
+                        class="has-arrow waves-effect {{ Request::is(['investor', 'pengeluaranInvestor']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-user-tie"></i>
                         </div>
                         <span>Investor</span>
                     </a>
-                    <ul class="sub-menu {{ Request::is(['investor','pengeluaranInvestor']) ? 'mm-collapse mm-show' : '' }}"
+                    <ul class="sub-menu {{ Request::is(['investor', 'pengeluaranInvestor']) ? 'mm-collapse mm-show' : '' }}"
                         aria-expanded="false">
                         <li class="{{ Request::is('investor') ? 'mm-active' : '' }}"><a href="{{ route('investor') }}"
                                 class="{{ Request::is('investor') ? 'active' : '' }}">List Investor</a></li>
-                        <li class="{{ Request::is('pengeluaranInvestor') ? 'mm-active' : '' }}"><a href="{{ route('pengeluaranInvestor') }}"
-                                class="{{ Request::is('pengeluaranInvestor') ? 'active' : '' }}">Pengeluaran Investor</a></li>
+                        <li class="{{ Request::is('pengeluaranInvestor') ? 'mm-active' : '' }}"><a
+                                href="{{ route('pengeluaranInvestor') }}"
+                                class="{{ Request::is('pengeluaranInvestor') ? 'active' : '' }}">Pengeluaran
+                                Investor</a></li>
                     </ul>
                 </li>
 

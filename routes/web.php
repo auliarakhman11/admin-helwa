@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UkuranController;
@@ -128,6 +129,21 @@ Route::middleware('auth')->group(function () {
         Route::post('dropPengeluaranInvestor', [InvestorController::class, 'dropPengeluaranInvestor'])->name('dropPengeluaranInvestor');
         //end pengeluaran investor
 
+        //akun
+        Route::get('akunPengeluaran', [PengeluaranController::class, 'akunPengeluaran'])->name('akunPengeluaran');
+        Route::post('addAkun', [PengeluaranController::class, 'addAkun'])->name('addAkun');
+        Route::patch('editAkun', [PengeluaranController::class, 'editAkun'])->name('editAkun');
+        Route::post('dropAkun', [PengeluaranController::class, 'dropAkun'])->name('dropAkun');
+        //end akun
+
+        //pengeluaran
+        Route::get('pengeluaran', [PengeluaranController::class, 'pengeluaran'])->name('pengeluaran');
+        Route::post('addPengeluaran', [PengeluaranController::class, 'addPengeluaran'])->name('addPengeluaran');
+        Route::patch('editPengeluaran', [PengeluaranController::class, 'editPengeluaran'])->name('editPengeluaran');
+        Route::post('dropPengeluaran', [PengeluaranController::class, 'dropPengeluaran'])->name('dropPengeluaran');
+        //end pengeluaran
+
+
     });
 
 
@@ -144,7 +160,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('inputPersenInvestor',[InvestorController::class,'inputPersenInvestor'])->name('inputPersenInvestor');
+Route::get('inputPersenInvestor', [InvestorController::class, 'inputPersenInvestor'])->name('inputPersenInvestor');
 
 
 Route::middleware('guest')->group(function () {
