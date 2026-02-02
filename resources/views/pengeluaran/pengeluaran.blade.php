@@ -10,7 +10,8 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h4 class="page-title mb-1">List Pengeluaran</h4>
+                        <h4 class="page-title mb-1">List Pengeluaran {{ date('d/m/Y', strtotime($tgl1)) }} s/d
+                            {{ date('d/m/Y', strtotime($tgl2)) }}</h4>
                         {{-- <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item active">Welcome to Xoric Dashboard</li>
                             </ol> --}}
@@ -80,7 +81,7 @@
                                                     @if ($d->jenis == '1')
                                                         Kas
                                                     @else
-                                                        Pengeluaran Investor<br>{{ $d->investor->nm_investor }}
+                                                        Laba
                                                     @endif
                                                 </td>
                                                 <td>{{ $d->akun->nm_akun }}</td>
@@ -200,17 +201,7 @@
                                 <label>Jenis</label>
                                 <select name="jenis" class="form-control" id="jenis" required>
                                     <option value="1">Kas</option>
-                                    <option value="0">Investor</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6 col-12">
-                                <label>Investor</label>
-                                <select name="investor_id" class="form-control" id="investor_id" disabled required>
-                                    <option value="">Pilih Investor</option>
-                                    @foreach ($investor as $i)
-                                        <option value="{{ $i->id }}">{{ $i->nm_investor }}</option>
-                                    @endforeach
+                                    <option value="2">Laba</option>
                                 </select>
                             </div>
 
@@ -258,6 +249,12 @@
                             <div class="row">
                                 <input type="hidden" name="id" value="{{ $p->id }}">
 
+                                <div class="col-md-6 col-12">
+                                    <label>Tanggal</label>
+                                    <input type="date" name="tgl" class="form-control"
+                                        value="{{ $p->tgl }}" required>
+                                </div>
+
                                 <div class="col-12">
                                     <label>Cabang</label>
                                     <select name="cabang_id" class="form-control" required>
@@ -277,6 +274,14 @@
                                             <option value="{{ $a->id }}"
                                                 {{ $p->akun_id == $a->id ? 'selected' : '' }}>{{ $a->nm_akun }}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <label>Jenis</label>
+                                    <select name="jenis" class="form-control" id="jenis" required>
+                                        <option value="1" {{ $p->jenis == 1 ? 'selectd' : '' }}>Kas</option>
+                                        <option value="2" {{ $p->jenis == 2 ? 'selectd' : '' }}>Laba</option>
                                     </select>
                                 </div>
 
