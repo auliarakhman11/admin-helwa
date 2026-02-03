@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ClusterController;
@@ -142,6 +142,10 @@ Route::middleware('auth')->group(function () {
         Route::patch('editPengeluaran', [PengeluaranController::class, 'editPengeluaran'])->name('editPengeluaran');
         Route::post('dropPengeluaran', [PengeluaranController::class, 'dropPengeluaran'])->name('dropPengeluaran');
         //end pengeluaran
+
+        //absen
+        Route::get('absen', [AbsenController::class, 'index'])->name('absen');
+        //endabsen
 
 
     });

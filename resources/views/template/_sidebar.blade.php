@@ -95,17 +95,19 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['karyawan', 'absen']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
-                        class="has-arrow waves-effect {{ Request::is(['karyawan']) ? 'mm-active' : '' }}">
+                        class="has-arrow waves-effect {{ Request::is(['karyawan', 'absen']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
                         </div>
                         <span>Karyawan</span>
                     </a>
-                    <ul class="sub-menu {{ Request::is(['karyawan']) ? 'mm-collapse mm-show' : '' }}"
+                    <ul class="sub-menu {{ Request::is(['karyawan', 'absen']) ? 'mm-collapse mm-show' : '' }}"
                         aria-expanded="false">
                         <li class="{{ Request::is('karyawan') ? 'mm-active' : '' }}"><a href="{{ route('karyawan') }}"
                                 class="{{ Request::is('karyawan') ? 'active' : '' }}">List Karyawan</a></li>
+                        <li class="{{ Request::is('absen') ? 'mm-active' : '' }}"><a href="{{ route('absen') }}"
+                                class="{{ Request::is('absen') ? 'active' : '' }}">List Absen</a></li>
                     </ul>
                 </li>
 
