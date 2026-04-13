@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvoiceKasir;
+use App\Models\Pengeluaran;
 use App\Models\PenjualanKarywan;
 use App\Models\PenjualanKasir;
 use App\Models\Stok;
@@ -130,6 +131,8 @@ class PenjualanController extends Controller
             'tgl2' => $tgl2,
             'chart' => $dtc,
             'periode' => $dt_pr,
+            'pengeluaran' => Pengeluaran::select('pengeluaran.*')->selectRaw('SUM(jumlah) as ttl_pengeluaran')->where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->groupBy('jenis')->get(),
+            'penjualan' => InvoiceKasir::select('invoice_kasir.*')->selectRaw('SUM(total) as ttl_penjualan, SUM(diskon) as ttl_diskon, SUM(pembulatan) as ttl_pembulatan')->where('invoice_kasir.void', 0)->where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->groupBy('pembayaran_id')->with('pembayaran')->get(),
 
         ]);
     }

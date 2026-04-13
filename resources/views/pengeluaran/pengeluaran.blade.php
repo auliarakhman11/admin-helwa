@@ -80,8 +80,12 @@
                                                 <td>
                                                     @if ($d->jenis == '1')
                                                         Kas
-                                                    @else
+                                                    @endif
+                                                    @if ($d->jenis == '2')
                                                         Laba
+                                                    @endif
+                                                    @if ($d->jenis == '3')
+                                                        QRIS/Transfer
                                                     @endif
                                                 </td>
                                                 <td>{{ $d->akun->nm_akun }}</td>
@@ -202,6 +206,7 @@
                                 <select name="jenis" class="form-control" id="jenis" required>
                                     <option value="1">Kas</option>
                                     <option value="2">Laba</option>
+                                    <option value="3">QRIS/Transfer</option>
                                 </select>
                             </div>
 
@@ -282,6 +287,8 @@
                                     <select name="jenis" class="form-control" id="jenis" required>
                                         <option value="1" {{ $p->jenis == 1 ? 'selectd' : '' }}>Kas</option>
                                         <option value="2" {{ $p->jenis == 2 ? 'selectd' : '' }}>Laba</option>
+                                        <option value="3" {{ $p->jenis == 3 ? 'selectd' : '' }}>QRIS/Transfer
+                                        </option>
                                     </select>
                                 </div>
 

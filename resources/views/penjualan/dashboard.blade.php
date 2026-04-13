@@ -64,6 +64,110 @@
             </div> <!-- container-fluid -->
         </div>
         <!-- end page-content-wrapper -->
+
+        <div class="page-content-wrapper mt-2">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Laporan Penjualan</h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered">
+                                    <tr>
+                                        <td colspan="2" class="text-center"><strong>PENJUALAN</strong></td>
+                                    </tr>
+                                    @php
+                                        $total_penjualan = 0;
+                                        $total_penjualan_kas = 0;
+                                        $total_penjualan_transfer = 0;
+                                    @endphp
+                                    @foreach ($penjualan as $d)
+                                        @php
+                                            $total_penjualan += $d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan;
+                                            if ($d->pembayaran_id == 1) {
+                                                $total_penjualan_kas +=
+                                                    $d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan;
+                                            } else {
+                                                $total_penjualan_transfer +=
+                                                    $d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan;
+                                            }
+
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $d->pembayaran->pembayaran }}</td>
+                                            <td>{{ number_format($d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan, 0) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td><strong>Total Penjualan Kas</strong></td>
+                                        <td><strong>{{ number_format($total_penjualan_kas, 0) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Penjualan QRIS/Transfer</strong></td>
+                                        <td><strong>{{ number_format($total_penjualan_transfer, 0) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Penjualan</strong></td>
+                                        <td><strong>{{ number_format($total_penjualan, 0) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="text-center"><strong>PENGELUARAN</strong></td>
+                                    </tr>
+                                    @php
+                                        $total_pengeluaran = 0;
+                                        $total_pengeluaran_kas = 0;
+                                        $total_pengeluaran_transfer = 0;
+                                    @endphp
+                                    @foreach ($pengeluaran as $d)
+                                        @php
+                                            $total_pengeluaran += $d->ttl_pengeluaran;
+                                            if ($d->pembayaran_id == 1 || $d->pembayaran_id == 2) {
+                                                $total_pengeluaran_kas += $d->ttl_pengeluaran;
+                                            } else {
+                                                $total_pengeluaran_transfer += $d->ttl_pengeluaran;
+                                            }
+
+                                        @endphp
+                                        <tr>
+                                            <td>
+                                                @if ($d->jenis = 1)
+                                                    Kas
+                                                @endif
+                                                @if ($d->jenis = 2)
+                                                    Laba
+                                                @endif
+                                                @if ($d->jenis = 3)
+                                                    QRIS/Transfer
+                                                @endif
+                                            </td>
+                                            <td>{{ number_format($d->ttl_pengeluaran, 0) }}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td><strong>Total Pengeluaran Kas</strong></td>
+                                        <td><strong>{{ number_format($total_pengeluaran_kas, 0) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Pengeluaran QRIS/Transfer</strong></td>
+                                        <td><strong>{{ number_format($total_pengeluaran_transfer, 0) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Pengeluaran</strong></td>
+                                        <td><strong>{{ number_format($total_pengeluaran, 0) }}</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container-fluid -->
+        </div>
+
     </div>
     <!-- End Page-content -->
 
