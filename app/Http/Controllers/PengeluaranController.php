@@ -56,7 +56,7 @@ class PengeluaranController extends Controller
             $tgl1 = $request->query('tgl1');
             $tgl2 = $request->query('tgl2');
         } else {
-            $tgl1 = date('Y-m-d');
+            $tgl1 = date('Y-m-01');
             $tgl2 = date('Y-m-t');
         }
 
