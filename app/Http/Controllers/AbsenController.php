@@ -16,8 +16,8 @@ class AbsenController extends Controller
             $tgl1 = $request->query('tgl1');
             $tgl2 = $request->query('tgl2');
         } else {
-            $tgl1 = date('Y-m-d', strtotime("-7 day", strtotime(date("Y-m-d"))));
-            $tgl2 = date('Y-m-d');
+            $tgl1 = date('Y-m-01');
+            $tgl2 = date('Y-m-t');
         }
 
         $data = [

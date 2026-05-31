@@ -172,7 +172,6 @@
     <!-- End Page-content -->
 
     <form action="" method="get">
-        @csrf
         <div id="modal_view" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabeltambah"
             aria-hidden="true">
             <div class="modal-dialog">

@@ -59,6 +59,7 @@
                                             <th>Tanggal</th>
                                             <th>Karyawan</th>
                                             <th>Absen</th>
+                                            <td>Potongan</td>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -72,7 +73,8 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ date('d/m/Y', strtotime($a->tgl)) }}</td>
                                                 <td>{{ $a->karyawan->nama }}</td>
-                                                <td>{{ $a->jam }}
+                                                <td>{{ $a->jam }}</td>
+                                                <td>{{ number_format($a->potongan, 0) }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-xs btn-primary foto_buka"
                                                         foto = "{{ $a->foto }}" data-bs-toggle="modal"
@@ -84,6 +86,55 @@
                                         @endforeach
 
                                     </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container-fluid -->
+        </div>
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table nowrap table-striped"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Karyawan</th>
+                                            <th>Potongan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $i = 1;
+                                            $total_potongan = 0;
+                                        @endphp
+                                        @foreach ($potongan as $p)
+                                            @php
+                                                $total_potongan += $p->jml_potongan;
+                                            @endphp
+                                            <tr>
+                                                {{-- <td><img src="{{ asset('') }}{{ $p->foto }}" alt="" height="40px"></td> --}}
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $p->karyawan->nama }}</td>
+                                                <td>{{ number_format($p->jml_potongan, 0) }}</td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2"><strong>Total</strong></td>
+                                            <td><strong>{{ number_format($total_potongan, 0) }}</strong></td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
