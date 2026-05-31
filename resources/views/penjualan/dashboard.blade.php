@@ -171,6 +171,47 @@
     </div>
     <!-- End Page-content -->
 
+    <form action="" method="get">
+        @csrf
+        <div id="modal_view" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabeltambah"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabeltambah">View</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span class="mdi mdi-close"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">
+                                    Dari
+                                </label>
+                                <input type="date" name="tgl1" value="{{ $tgl1 }}" class="form-control"
+                                    required>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="">
+                                    Sampai
+                                </label>
+                                <input type="date" name="tgl2" value="{{ $tgl2 }}" class="form-control"
+                                    required>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">View</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+    </form>
+
 
 @section('script')
     <script>
