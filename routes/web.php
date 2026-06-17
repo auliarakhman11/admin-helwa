@@ -7,6 +7,7 @@ use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PengeluaranController;
@@ -146,6 +147,18 @@ Route::middleware('auth')->group(function () {
         //absen
         Route::get('absen', [AbsenController::class, 'index'])->name('absen');
         //endabsen
+
+        //perbaikanStok
+        Route::get('perbaikanStok', [JurnalController::class, 'perbaikanStok'])->name('perbaikanStok');
+        //endperbaikanStok
+
+        //inputGapok
+        Route::get('inputGapok', [JurnalController::class, 'inputGapok'])->name('inputGapok');
+        //endinputGapok
+
+        //laporan Keuangan
+        Route::get('laporanKeuangan', [JurnalController::class, 'laporanKeuangan'])->name('laporanKeuangan');
+        //end laporan keuangan
 
 
     });

@@ -56,8 +56,10 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Cluster</th>
-                                            <th>Takaran<br>Alkohol</th>
-                                            <th>Takaran<br>Produk</th>
+                                            <th>Takaran<br>Bibit</th>
+                                            <th>Takaran<br>Absolut</th>
+                                            <th>Takaran<br>Fixactiv</th>
+                                            <th>Takaran<br>Metanol</th>
                                             <th>Harga</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -72,13 +74,15 @@
                                                 <td>{{ $d->nm_cluster }}</td>
                                                 <td>{{ $d->takaran1 }}%</td>
                                                 <td>{{ $d->takaran2 }}%</td>
+                                                <td>{{ $d->takaran3 }}%</td>
+                                                <td>{{ $d->takaran4 }}%</td>
                                                 <td>
                                                     @if ($d->resep)
                                                         @foreach ($d->resep as $rs)
-                                                            {{ $rs->ukuran }} ml : {{ number_format($rs->harga,0) }}<br>
+                                                            {{ $rs->ukuran }} ml : {{ number_format($rs->harga, 0) }}<br>
                                                         @endforeach
                                                     @endif
-                                                    
+
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-sm btn-primary"
@@ -128,18 +132,31 @@
                                 <input type="text" name="nm_cluster" class="form-control" required>
                             </div>
 
-                            <div class="col-12 mb-2">
+                            <div class="col-6 mb-2">
                                 <label for="">
-                                    <dt>Alkohol</dt>
+                                    <dt>Bibit(%)</dt>
                                 </label>
                                 <input type="number" name="takaran1" class="form-control" required>
                             </div>
 
-                            <div class="col-12 mb-2">
+                            <div class="col-6 mb-2">
                                 <label for="">
-                                    <dt>Produk</dt>
+                                    <dt>Absolut(%)</dt>
                                 </label>
                                 <input type="number" name="takaran2" class="form-control" required>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label for="">
+                                    <dt>Fixactiv(%)</dt>
+                                </label>
+                                <input type="number" name="takaran3" class="form-control" required>
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label for="">
+                                    <dt>Metanol(%)</dt>
+                                </label>
+                                <input type="number" name="takaran4" class="form-control" required>
                             </div>
 
                         </div>
@@ -158,7 +175,8 @@
                                             <td>{{ $u->ukuran }} ml</td>
                                             <td>
                                                 <input type="hidden" name="ukuran[]" value="{{ $u->ukuran }}" required>
-                                                <input type="number" class="form-control form-control-sm" name="harga[]" required>
+                                                <input type="number" class="form-control form-control-sm" name="harga[]"
+                                                    required>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -203,59 +221,78 @@
                                         value="{{ $d->nm_cluster }}" required>
                                 </div>
 
-                                <div class="col-12 mb-2">
+                                <div class="col-6 mb-2">
                                     <label for="">
-                                        <dt>Alkohol</dt>
+                                        <dt>Bibit</dt>
                                     </label>
                                     <input type="number" name="takaran1" class="form-control"
                                         value="{{ $d->takaran1 }}" required>
                                 </div>
 
-                                <div class="col-12 mb-2">
+                                <div class="col-6 mb-2">
                                     <label for="">
-                                        <dt>Produk</dt>
+                                        <dt>Absolut</dt>
                                     </label>
                                     <input type="number" name="takaran2" class="form-control"
                                         value="{{ $d->takaran2 }}" required>
                                 </div>
 
+                                <div class="col-6 mb-2">
+                                    <label for="">
+                                        <dt>Fixactiv</dt>
+                                    </label>
+                                    <input type="number" name="takaran3" class="form-control"
+                                        value="{{ $d->takaran1 }}" required>
+                                </div>
+
+                                <div class="col-6 mb-2">
+                                    <label for="">
+                                        <dt>Metanol</dt>
+                                    </label>
+                                    <input type="number" name="takaran4" class="form-control"
+                                        value="{{ $d->takaran2 }}" required>
+                                </div>
+
                             </div>
                             <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>Ukuran</th>
-                                        <th>Harga</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($ukuran as $u)
-                                    @php
-                                        $dt = $d->resep;
-                                        $dat = $dt->where('ukuran',$u->ukuran)->where('void',0)->first();
-                                    @endphp
-                                    @if ($dat)
-                                        <tr>
-                                            <td>{{ $u->ukuran }} ml</td>
-                                            <td>
-                                                <input type="hidden" name="resep_id[]" value="{{ $dat->id }}" required>
-                                                <input type="number" class="form-control form-control-sm" name="harga[]" value="{{ $dat->harga }}" required>
-                                            </td>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>Ukuran</th>
+                                            <th>Harga</th>
                                         </tr>
-                                    @else
-                                        <tr>
-                                            <td>{{ $u->ukuran }} ml</td>
-                                            <td>
-                                                <input type="hidden" name="ukuran_add[]" value="{{ $u->ukuran }}" required>
-                                                <input type="number" class="form-control form-control-sm" name="harga_add[]" required>
-                                            </td>
-                                        </tr>
-                                    @endif
-                                        
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($ukuran as $u)
+                                            @php
+                                                $dt = $d->resep;
+                                                $dat = $dt->where('ukuran', $u->ukuran)->where('void', 0)->first();
+                                            @endphp
+                                            @if ($dat)
+                                                <tr>
+                                                    <td>{{ $u->ukuran }} ml</td>
+                                                    <td>
+                                                        <input type="hidden" name="resep_id[]"
+                                                            value="{{ $dat->id }}" required>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                            name="harga[]" value="{{ $dat->harga }}" required>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                <tr>
+                                                    <td>{{ $u->ukuran }} ml</td>
+                                                    <td>
+                                                        <input type="hidden" name="ukuran_add[]"
+                                                            value="{{ $u->ukuran }}" required>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                            name="harga_add[]" required>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

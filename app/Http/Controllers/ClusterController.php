@@ -14,7 +14,7 @@ class ClusterController extends Controller
         $data = [
             'title' => 'Cluster',
             'cluster' => Cluster::where('void', 0)->with('resep')->get(),
-            'ukuran' => Ukuran::where('void',0)->get(),
+            'ukuran' => Ukuran::where('void', 0)->get(),
         ];
         return view('cluster.index', $data);
     }
@@ -31,6 +31,8 @@ class ClusterController extends Controller
                 'nm_cluster' => $request->nm_cluster,
                 'takaran1' => $request->takaran1,
                 'takaran2' => $request->takaran2,
+                'takaran3' => $request->takaran3,
+                'takaran4' => $request->takaran4,
             ];
             $cluster = Cluster::create($data);
 
@@ -42,6 +44,8 @@ class ClusterController extends Controller
                     Resep::create([
                         'takaran1' => $request->takaran1,
                         'takaran2' => $request->takaran2,
+                        'takaran3' => $request->takaran3,
+                        'takaran4' => $request->takaran4,
                         'cluster_id' => $cluster->id,
                         'ukuran' => $ukuran[$count],
                         'harga' => $harga[$count] ? $harga[$count] : 0,
@@ -63,6 +67,8 @@ class ClusterController extends Controller
                 'nm_cluster' => $request->nm_cluster,
                 'takaran1' => $request->takaran1,
                 'takaran2' => $request->takaran2,
+                'takaran3' => $request->takaran3,
+                'takaran4' => $request->takaran4,
             ];
             Cluster::where('id', $request->id)->update($data);
 
@@ -76,9 +82,11 @@ class ClusterController extends Controller
 
             if ($resep_id) {
                 for ($count = 0; $count < count($resep_id); $count++) {
-                    Resep::where('id',$resep_id[$count])->update([
+                    Resep::where('id', $resep_id[$count])->update([
                         'takaran1' => $request->takaran1,
                         'takaran2' => $request->takaran2,
+                        'takaran3' => $request->takaran3,
+                        'takaran4' => $request->takaran4,
                         'harga' => $harga[$count] ? $harga[$count] : 0,
                     ]);
                 }
@@ -92,6 +100,8 @@ class ClusterController extends Controller
                     Resep::create([
                         'takaran1' => $request->takaran1,
                         'takaran2' => $request->takaran2,
+                        'takaran3' => $request->takaran3,
+                        'takaran4' => $request->takaran4,
                         'cluster_id' => $request->id,
                         'ukuran' => $ukuran_add[$count],
                         'harga' => $harga_add[$count] ? $harga_add[$count] : 0,

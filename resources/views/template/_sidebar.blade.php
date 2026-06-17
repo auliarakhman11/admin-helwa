@@ -16,10 +16,25 @@
                     </a>
                 </li> --}}
 
+                <li class="{{ Request::is(['laporanKeuangan']) ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is(['laporanKeuangan']) ? 'mm-active' : '' }}">
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <span>Keuangan</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is(['laporanKeuangan']) ? 'mm-collapse mm-show' : '' }}"
+                        aria-expanded="false">
+                        <li class="{{ Request::is('laporanKeuangan') ? 'mm-active' : '' }}"><a
+                                href="{{ route('laporanKeuangan') }}"
+                                class="{{ Request::is('laporanKeuangan') ? 'active' : '' }}">Laporan Keuangan</a></li>
+                    </ul>
+                </li>
+
                 <li class="{{ Request::is(['penjualan', '/', 'member', 'diskon']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
                         class="has-arrow waves-effect {{ Request::is(['penjualan', '/', 'member', 'diskon']) ? 'mm-active' : '' }}">
-                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-address-book"></i>
+                        <div class="d-inline-block icons-sm me-1"><i class="fas fa-cash-register"></i>
                         </div>
                         <span>Penjualan</span>
                     </a>
@@ -27,7 +42,8 @@
                         aria-expanded="false">
                         <li class="{{ Request::is('/') ? 'mm-active' : '' }}"><a href="{{ route('dashboard') }}"
                                 class="{{ Request::is('/') ? 'active' : '' }}">Dashboard</a></li>
-                        <li class="{{ Request::is('penjualan') ? 'mm-active' : '' }}"><a href="{{ route('penjualan') }}"
+                        <li class="{{ Request::is('penjualan') ? 'mm-active' : '' }}"><a
+                                href="{{ route('penjualan') }}"
                                 class="{{ Request::is('penjualan') ? 'active' : '' }}">List Penjualan</a></li>
                         <li class="{{ Request::is('member') ? 'mm-active' : '' }}"><a href="{{ route('member') }}"
                                 class="{{ Request::is('member') ? 'active' : '' }}">List Member</a></li>
