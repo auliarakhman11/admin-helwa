@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkunPengeluaran;
 use App\Models\Gapok;
 use App\Models\InvoiceKasir;
 use App\Models\Karyawan;
@@ -221,5 +222,127 @@ class JurnalController extends Controller
         }
 
         return 'ya';
+    }
+
+    public function inputPengeluaranPokok()
+    {
+        $dt_akun = AkunPengeluaran::where('jumlah', '!=', 0)->where('void', 0)->get();
+
+        for ($i = 1; $i <= 18; $i++) {
+            foreach ($dt_akun as $d) {
+                $jumlah = $d->jumlah / 30;
+                Pengeluaran::create([
+                    'cabang_id' => 1,
+                    'akun_id' => $d->id,
+                    'jenis' => 2,
+                    'jumlah' => $jumlah,
+                    'ket' => 'Pengeluaran Harian',
+                    'tgl' => "2026-06-" . $i,
+                    'user_id' => 1,
+                    'void' => 0
+                ]);
+            }
+        }
+
+        return 'ya';
+    }
+
+    public function inputPokok()
+    {
+        $tgl = date('Y-m-d');
+        $dt_karyawan = Karyawan::where('gapok', '!=', 0)->where('aktif', 1)->get();
+        $dt_akun = AkunPengeluaran::where('jumlah', '!=', 0)->where('void', 0)->get();
+
+        if (date('d') != '31' && date('m-d') != '02-29') {
+            if (date('m-d') == '02-28') {
+
+                foreach ($dt_karyawan as $d) {
+                    $gapok = $d->gapok / 30;
+                    Gapok::create([
+                        'karyawan_id' => $d->id,
+                        'jumlah' => $gapok,
+                        'cabang_id' => 1,
+                        'tgl' => $tgl,
+                    ]);
+
+                    Gapok::create([
+                        'karyawan_id' => $d->id,
+                        'jumlah' => $gapok,
+                        'cabang_id' => 1,
+                        'tgl' => $tgl,
+                    ]);
+
+                    Gapok::create([
+                        'karyawan_id' => $d->id,
+                        'jumlah' => $gapok,
+                        'cabang_id' => 1,
+                        'tgl' => $tgl,
+                    ]);
+                }
+
+                foreach ($dt_akun as $d) {
+                    $jumlah = $d->jumlah / 30;
+                    Pengeluaran::create([
+                        'cabang_id' => 1,
+                        'akun_id' => $d->id,
+                        'jenis' => 2,
+                        'jumlah' => $jumlah,
+                        'ket' => 'Pengeluaran Harian',
+                        'tgl' => $tgl,
+                        'user_id' => 1,
+                        'void' => 0
+                    ]);
+
+                    Pengeluaran::create([
+                        'cabang_id' => 1,
+                        'akun_id' => $d->id,
+                        'jenis' => 2,
+                        'jumlah' => $jumlah,
+                        'ket' => 'Pengeluaran Harian',
+                        'tgl' => $tgl,
+                        'user_id' => 1,
+                        'void' => 0
+                    ]);
+
+                    Pengeluaran::create([
+                        'cabang_id' => 1,
+                        'akun_id' => $d->id,
+                        'jenis' => 2,
+                        'jumlah' => $jumlah,
+                        'ket' => 'Pengeluaran Harian',
+                        'tgl' => $tgl,
+                        'user_id' => 1,
+                        'void' => 0
+                    ]);
+                }
+            } else {
+
+                foreach ($dt_karyawan as $d) {
+                    $gapok = $d->gapok / 30;
+                    Gapok::create([
+                        'karyawan_id' => $d->id,
+                        'jumlah' => $gapok,
+                        'cabang_id' => 1,
+                        'tgl' => $tgl,
+                    ]);
+                }
+
+                foreach ($dt_akun as $d) {
+                    $jumlah = $d->jumlah / 30;
+                    Pengeluaran::create([
+                        'cabang_id' => 1,
+                        'akun_id' => $d->id,
+                        'jenis' => 2,
+                        'jumlah' => $jumlah,
+                        'ket' => 'Pengeluaran Harian',
+                        'tgl' => $tgl,
+                        'user_id' => 1,
+                        'void' => 0
+                    ]);
+                }
+            }
+        }
+
+        return true;
     }
 }

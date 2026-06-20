@@ -9,6 +9,5 @@ class AkunPengeluaran extends Model
 {
     use HasFactory;
     protected $table = 'akun_pengeluaran';
-    protected $fillable = ['nm_akun','void'];
-
+    protected $fillable = ['nm_akun', 'jumlah', 'void'];
 }

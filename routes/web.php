@@ -156,9 +156,15 @@ Route::middleware('auth')->group(function () {
         Route::get('inputGapok', [JurnalController::class, 'inputGapok'])->name('inputGapok');
         //endinputGapok
 
+        //inputPengeluaran
+        Route::get('inputPengeluaranPokok', [JurnalController::class, 'inputPengeluaranPokok'])->name('inputPengeluaranPokok');
+        //enInputPengeluaran
+
         //laporan Keuangan
         Route::get('laporanKeuangan', [JurnalController::class, 'laporanKeuangan'])->name('laporanKeuangan');
         //end laporan keuangan
+
+
 
 
     });
@@ -175,6 +181,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('non-active', [AuthController::class, 'nonActive'])->name('nonActive');
 });
+
+
+//inputpokok
+Route::get('inputPokok', [JurnalController::class, 'inputPokok'])->name('inputPokok');
+//endinputpokok
 
 
 Route::get('inputPersenInvestor', [InvestorController::class, 'inputPersenInvestor'])->name('inputPersenInvestor');
