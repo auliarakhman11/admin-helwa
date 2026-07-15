@@ -74,7 +74,69 @@
                                 <h5>Laporan Penjualan</h5>
                             </div>
                             <div class="card-body">
-                                <table class="table table-sm table-bordered">
+
+                                <table class="table table-sm table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th><b>JENIS</b></th>
+                                            <th><b>PENDAPATAN</b></th>
+                                            <th><b>PENGELUARAN</b></th>
+                                            <th><b>AKUAL</b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $pemasukan_cash = 0;
+                                            $pemasukan_qris = 0;
+                                            $pengeluaran_cash = 0;
+                                            $pengeluaran_qris = 0;
+
+                                            foreach ($penjualan as $d) {
+                                                if ($d->pembayaran_id == 1) {
+                                                    $pemasukan_cash +=
+                                                        $d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan;
+                                                } else {
+                                                    $pemasukan_qris +=
+                                                        $d->ttl_penjualan - $d->ttl_diskon + $d->ttl_pembulatan;
+                                                }
+                                            }
+
+                                            foreach ($pengeluaran as $d) {
+                                                if ($d->pembayaran_id == 1 || $d->pembayaran_id == 2) {
+                                                    $pengeluaran_cash += $d->ttl_pengeluaran;
+                                                } else {
+                                                    $pengeluaran_qris += $d->ttl_pengeluaran;
+                                                }
+                                            }
+
+                                        @endphp
+
+                                        <tr>
+                                            <td><strong>CASH</strong></td>
+                                            <td>{{ number_format($pemasukan_cash, 0) }}</td>
+                                            <td>{{ number_format($pengeluaran_cash, 0) }}</td>
+                                            <td>{{ number_format($pemasukan_cash - $pengeluaran_cash, 0) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>QRIS</strong></td>
+                                            <td>{{ number_format($pemasukan_qris, 0) }}</td>
+                                            <td>{{ number_format($pengeluaran_qris, 0) }}</td>
+                                            <td>{{ number_format($pemasukan_qris - $pengeluaran_qris, 0) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>TOTAL</strong></td>
+                                            <td><strong>{{ number_format($pemasukan_cash + $pemasukan_qris, 0) }}</strong>
+                                            </td>
+                                            <td><strong>{{ number_format($pengeluaran_cash + $pengeluaran_qris, 0) }}</strong>
+                                            </td>
+                                            <td><strong>{{ number_format($pemasukan_cash + $pemasukan_qris - ($pengeluaran_cash + $pengeluaran_qris), 0) }}</strong>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                {{-- <table class="table table-sm table-bordered">
                                     <tr>
                                         <td colspan="2" class="text-center"><strong>PENJUALAN</strong></td>
                                     </tr>
@@ -158,7 +220,7 @@
                                         <td><strong>Total Pengeluaran</strong></td>
                                         <td><strong>{{ number_format($total_pengeluaran, 0) }}</strong></td>
                                     </tr>
-                                </table>
+                                </table> --}}
                             </div>
                         </div>
                     </div>
