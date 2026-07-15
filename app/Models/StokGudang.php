@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stok extends Model
+class StokGudang extends Model
 {
     use HasFactory;
 
-    protected $table = 'stok';
-    protected $fillable = ['kd_gabungan', 'invoice_id', 'penjualan_id', 'produk_id', 'cabang_id', 'qty', 'harga', 'tgl', 'admin', 'jenis', 'jenis_bahan', 'void'];
+    protected $table = 'stok_gudang';
+    protected $fillable = ['no_invoice', 'kd_gabungan', 'produk_id', 'cabang_id', 'qty', 'harga', 'harga_normal', 'tgl', 'admin', 'jenis', 'jenis_bahan', 'void'];
 
     public function produk()
     {

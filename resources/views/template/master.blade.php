@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="{{ asset('img') }}/helwa.jpg">
 
     <!-- datepicker -->
-    <link href="{{ asset('template') }}/libs/air-datepicker/air-datepicker.css" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('template') }}/libs/air-datepicker/air-datepicker.css" rel="stylesheet" type="text/css" /> --}}
 
     <!-- jvectormap -->
     <link href="{{ asset('template') }}/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
@@ -30,6 +30,10 @@
 
     <!-- Sweet Alert-->
     <link href="{{ asset('template') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('select2') }}/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('select2') }}/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('template') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -439,8 +443,8 @@
     <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
     <!-- datepicker -->
-    <script src="{{ asset('template') }}/libs/air-datepicker/js/datepicker.min.js"></script>
-    <script src="{{ asset('template') }}/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
+    {{-- <script src="{{ asset('template') }}/libs/air-datepicker/js/datepicker.min.js"></script>
+    <script src="{{ asset('template') }}/libs/air-datepicker/js/i18n/datepicker.en.js"></script> --}}
 
     <!-- apexcharts -->
     <script src="{{ asset('template') }}/libs/apexcharts/apexcharts.min.js"></script>
@@ -470,9 +474,32 @@
     <!-- Sweet alert init js-->
     <script src="{{ asset('template') }}/js/pages/sweet-alerts.init.js"></script>
 
+    {{-- select2 --}}
+    <script src="{{ asset('select2') }}/select2/js/select2.full.min.js"></script>
+
     <script src="{{ asset('template') }}/js/app.js"></script>
 
+
+
     @yield('script')
+
+    <script>
+        $(document).ready(function() {
+            $('.select').select2();
+
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+
+            $('.select2bs4').each(function() {
+                $(this).select2({
+                    theme: 'bootstrap4',
+                    dropdownParent: $(this).parent(),
+                });
+            });
+
+        });
+    </script>
 
 </body>
 

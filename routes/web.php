@@ -13,6 +13,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -162,7 +163,23 @@ Route::middleware('auth')->group(function () {
 
         //laporan Keuangan
         Route::get('laporanKeuangan', [JurnalController::class, 'laporanKeuangan'])->name('laporanKeuangan');
+        Route::post('addSaldoKas', [JurnalController::class, 'addSaldoKas'])->name('addSaldoKas');
+        Route::get('deleteSaldoKas/{id}', [JurnalController::class, 'deleteSaldoKas'])->name('deleteSaldoKas');
         //end laporan keuangan
+
+        //stok
+        Route::get('stokOutlet', [StokController::class, 'stokOutlet'])->name('stokOutlet');
+        //endstok
+
+        //stokgudang
+        Route::get('stokGudang', [StokController::class, 'stokGudang'])->name('stokGudang');
+        Route::post('addStokMasukGudang', [StokController::class, 'addStokMasukGudang'])->name('addStokMasukGudang');
+        Route::post('addStokKeluarGudang', [StokController::class, 'addStokKeluarGudang'])->name('addStokKeluarGudang');
+        Route::get('getHarga', [StokController::class, 'getHarga'])->name('getHarga');
+        Route::get('getInvoiceGudang', [StokController::class, 'getInvoiceGudang'])->name('getInvoiceGudang');
+        Route::get('getDetailInvoiceGudang', [StokController::class, 'getDetailInvoiceGudang'])->name('getDetailInvoiceGudang');
+        Route::get('deleteInvoice/{no_incoice}', [StokController::class, 'deleteInvoice'])->name('deleteInvoice');
+        //endstokgudang
 
 
 

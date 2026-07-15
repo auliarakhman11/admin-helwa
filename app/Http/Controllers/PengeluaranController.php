@@ -66,7 +66,7 @@ class PengeluaranController extends Controller
             'tgl2' => $tgl2,
             'cabang' => Cabang::where('off', 0)->get(),
             'akun' => AkunPengeluaran::where('void', 0)->get(),
-            'pengeluaran' => Pengeluaran::where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->orderBy('tgl', 'ASC')->orderBy('id', 'DESC')->with(['akun', 'user', 'cabang'])->get(),
+            'pengeluaran' => Pengeluaran::where('tgl', '>=', $tgl1)->where('tgl', '<=', $tgl2)->where('void', 0)->where('jenis_pengeluaran', 0)->orderBy('tgl', 'ASC')->orderBy('id', 'DESC')->with(['akun', 'user', 'cabang'])->get(),
         ]);
     }
 
@@ -80,7 +80,8 @@ class PengeluaranController extends Controller
             'ket' => $request->ket,
             'tgl' => $request->tgl,
             'user_id' => Auth::id(),
-            'void' => 0
+            'void' => 0,
+            'jenis_pengeluaran' => 0
         ]);
 
         return redirect()->back()->with('success', 'Data berhasil dibuat');

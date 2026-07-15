@@ -16,18 +16,24 @@
                     </a>
                 </li> --}}
 
-                <li class="{{ Request::is(['laporanKeuangan']) ? 'mm-active' : '' }}">
+                <li class="{{ Request::is(['laporanKeuangan', 'stokOutlet', 'stokGudang']) ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);"
-                        class="has-arrow waves-effect {{ Request::is(['laporanKeuangan']) ? 'mm-active' : '' }}">
+                        class="has-arrow waves-effect {{ Request::is(['laporanKeuangan', 'stokOutlet', 'stokGudang']) ? 'mm-active' : '' }}">
                         <div class="d-inline-block icons-sm me-1"><i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                        <span>Keuangan</span>
+                        <span>Keuangan & Stok</span>
                     </a>
-                    <ul class="sub-menu {{ Request::is(['laporanKeuangan']) ? 'mm-collapse mm-show' : '' }}"
+                    <ul class="sub-menu {{ Request::is(['laporanKeuangan', 'stokOutlet', 'stokGudang']) ? 'mm-collapse mm-show' : '' }}"
                         aria-expanded="false">
                         <li class="{{ Request::is('laporanKeuangan') ? 'mm-active' : '' }}"><a
                                 href="{{ route('laporanKeuangan') }}"
                                 class="{{ Request::is('laporanKeuangan') ? 'active' : '' }}">Laporan Keuangan</a></li>
+                        <li class="{{ Request::is('stokOutlet') ? 'mm-active' : '' }}"><a
+                                href="{{ route('stokOutlet') }}"
+                                class="{{ Request::is('stokOutlet') ? 'active' : '' }}">Laporan Stok Outlet</a></li>
+                        <li class="{{ Request::is('stokGudang') ? 'mm-active' : '' }}"><a
+                                href="{{ route('stokGudang') }}"
+                                class="{{ Request::is('stokGudang') ? 'active' : '' }}">Laporan Stok Gudang</a></li>
                     </ul>
                 </li>
 
